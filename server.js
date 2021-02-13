@@ -19,7 +19,7 @@ const port = process.env.PORT||3333;
 
     //пробуем выполнять команды скрипта аж при заходе на страницу
     app.get('/directFetch', (req, res) => {
-        alert('directFetchAlerting') //убрать
+        //alert('directFetchAlerting') //убрать
         res.send('res.send is executed')
         console.log('direct Fetch consoling')
     });
