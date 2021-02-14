@@ -53,7 +53,8 @@ const port = process.env.PORT||3333;
             .then((response) => response.json())
             .then((json) =>
                 //console.log(json)
-                res.send(JSON.stringify(json))
+                //res.send(JSON.stringify(json))
+                res.send(json)
             );
         //----------конец jsonplaceholder-------------
 
