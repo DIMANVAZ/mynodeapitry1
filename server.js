@@ -8,8 +8,10 @@ const fs = require('fs');
 const params = new URLSearchParams();
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
 let D = new Date();
-let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}_${D.getMinutes()}_${D.getSeconds()}`
-const text = 'Это первый раз, когда у нас получилось'
+let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}`
+                                                        //_${D.getMinutes()}_${D.getSeconds()}
+
+const text = 'Леонид!! Это первый раз, когда у нас получилось'
 
 params.append('text', text);
 params.append('voice', 'oksana');
@@ -73,7 +75,7 @@ const port = process.env.PORT||3333;
     });
 
     app.get('/download', function(req, res) {
-        res.download(path.join(__dirname,'*.ogg'))
+        res.download(path.join(__dirname,`${dayTime}.ogg`))
     })
 
     app.listen(port);
