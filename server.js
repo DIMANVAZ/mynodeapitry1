@@ -30,7 +30,7 @@ const port = process.env.PORT||3333;
         //res.send('res.send is executed') //работает на хероку
         console.log('direct Fetch consoling') //не работает на хероку
 
-  /*----------------------пробуем впендюрить апи яндекса----------------------------------------
+  //-------------------пробуем впендюрить апи яндекса----------------------------------------
         fetch('https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize', {
             method: 'post',
             body: params,
@@ -39,16 +39,17 @@ const port = process.env.PORT||3333;
                 'Authorization': 'Api-Key ' + api_key,
             },
         })
-            .then(res => {
-                console.log(res);
+            .then(resp => {
+                //console.log(res);
                 // return res.json();
+                res.send(resp.json())
                 const dest = fs.createWriteStream(`./fio.ogg`);
                 res.body.pipe(dest);
             })
             .catch(err => console.error(err));
-        */ //----------------------конец апи яндекса----------------------------------------
+         //----------------------конец апи яндекса----------------------------------------
 
-        //--------пробуем проверить на jsonplaceholder-----> работает и отрисовывает
+        /* //--------пробуем проверить на jsonplaceholder-----> работает и отрисовывает полученные данные
         fetch('https://jsonplaceholder.typicode.com/posts/1')
             .then((response) => response.json())
             .then((json) =>
@@ -56,7 +57,7 @@ const port = process.env.PORT||3333;
                 //res.send(JSON.stringify(json))
                 res.send(json)
             );
-        //----------конец jsonplaceholder-------------
+        */ //-------------------------конец jsonplaceholder------------------------
 
     });
 
