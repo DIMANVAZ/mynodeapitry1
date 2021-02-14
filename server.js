@@ -43,7 +43,7 @@ const port = process.env.PORT||3333;
                 //console.log(res);
                 // return res.json();
                 const dest = fs.createWriteStream(`./fio.ogg`);
-                //res.download(path.join(__dirname,`fio.ogg`))
+
                 resp.body.pipe(dest);
 
                 let ar = []
@@ -51,6 +51,7 @@ const port = process.env.PORT||3333;
                     ar.push(file);
                 })
 
+                res.download(path.join(__dirname,`fio.ogg`))
                 res.send(ar) // получили список файлов в папке
 
             })
