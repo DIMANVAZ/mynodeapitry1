@@ -30,7 +30,7 @@ const port = process.env.PORT||3333;
         res.send('res.send is executed') //работает на хероку
         console.log('direct Fetch consoling') //не работает на хероку
 
-  //----------------------пробуем впендюрить апи----------------------------------------
+  /*----------------------пробуем впендюрить апи яндекса----------------------------------------
         fetch('https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize', {
             method: 'post',
             body: params,
@@ -46,7 +46,13 @@ const port = process.env.PORT||3333;
                 res.body.pipe(dest);
             })
             .catch(err => console.error(err));
-        //----------------------конец апи----------------------------------------
+        */ //----------------------конец апи яндекса----------------------------------------
+
+        //--------пробуем проверить на jsonplaceholder-----
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+        //----------конец jsonplaceholder-------------
 
     });
 
