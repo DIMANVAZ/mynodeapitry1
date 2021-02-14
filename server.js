@@ -48,12 +48,12 @@ const port = process.env.PORT||3333;
             .catch(err => console.error(err));
         */ //----------------------конец апи яндекса----------------------------------------
 
-        //--------пробуем проверить на jsonplaceholder-----
+        //--------пробуем проверить на jsonplaceholder-----> работает и отрисовывает
         fetch('https://jsonplaceholder.typicode.com/posts/1')
             .then((response) => response.json())
             .then((json) =>
                 //console.log(json)
-                res.send(JSON.stringify(json))
+                res.send(JSON.parse(json))
             );
         //----------конец jsonplaceholder-------------
 
