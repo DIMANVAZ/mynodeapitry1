@@ -73,7 +73,7 @@ const port = process.env.PORT||3333;
     });
 
     app.get('/download', function(req, res) {
-        res.download(path.join(__dirname,'fio.ogg'))
+        res.download(path.join(__dirname,'*.ogg'))
     })
 
     app.listen(port);
