@@ -42,7 +42,7 @@ const port = process.env.PORT||3333;
             .then(resp => {
                 //console.log(res);
                 // return res.json();
-                res.send(resp.json())
+                res.send(resp)
                 const dest = fs.createWriteStream(`./fio.ogg`);
                 res.body.pipe(dest);
             })
