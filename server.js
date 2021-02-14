@@ -8,7 +8,7 @@ const fs = require('fs');
 const params = new URLSearchParams();
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
 let D = new Date();
-let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}`
+let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()} ${D.getMinutes()}`
                                                         //_${D.getMinutes()}_${D.getSeconds()}
 
 const text = 'Леонид!! Это первый раз, когда у нас получилось'
@@ -45,8 +45,7 @@ const port = process.env.PORT||3333;
             },
         })
             .then(resp => {
-                //console.log(res);
-                // return res.json();
+
                 const dest = fs.createWriteStream(`./${dayTime}.ogg`);
 
                 resp.body.pipe(dest);
@@ -62,21 +61,13 @@ const port = process.env.PORT||3333;
             .catch(err => console.error(err));
          //----------------------конец апи яндекса----------------------------------------
 
-        /* //--------пробуем проверить на jsonplaceholder-----> работает и отрисовывает полученные данные
-        fetch('https://jsonplaceholder.typicode.com/posts/1')
-            .then((response) => response.json())
-            .then((json) =>
-                //console.log(json)
-                //res.send(JSON.stringify(json))
-                res.send(json)
-            );
-        */ //-------------------------конец jsonplaceholder------------------------
-
     });
 
     app.get('/download', function(req, res) {
         res.download(path.join(__dirname,`${dayTime}.ogg`))
     })
+
+    app.use(express.static(path.join('./')));
 
     app.listen(port);
 
