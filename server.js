@@ -51,7 +51,6 @@ const port = process.env.PORT||3333;
                     ar.push(file);
                 })
 
-                res.download(path.join(__dirname,`fio.ogg`))
                 res.send(ar) // получили список файлов в папке
 
             })
@@ -69,6 +68,10 @@ const port = process.env.PORT||3333;
         */ //-------------------------конец jsonplaceholder------------------------
 
     });
+
+    app.get('/download', function(req, res) {
+        res.download(path.join(__dirname,'fio.ogg'))
+    })
 
     app.listen(port);
 
