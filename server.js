@@ -42,17 +42,17 @@ const port = process.env.PORT||3333;
             .then(resp => {
                 //console.log(res);
                 // return res.json();
+                const dest = fs.createWriteStream(`./fio.ogg`);
+                //res.download(path.join(__dirname,`fio.ogg`))
+                resp.body.pipe(dest);
+
                 let ar = []
                 fs.readdirSync(__dirname).forEach(file => {
                     ar.push(file);
                 })
 
-                res.send(ar)
+                res.send(ar) // получили список файлов в папке
 
-
-                const dest = fs.createWriteStream(`./fio.ogg`);
-                    res.download(path.join(__dirname,`fio.ogg`))
-                res.body.pipe(dest);
             })
             .catch(err => console.error(err));
          //----------------------конец апи яндекса----------------------------------------
