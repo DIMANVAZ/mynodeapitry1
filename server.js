@@ -6,6 +6,9 @@ const api_key = 'AQVN2Lc0Dc_Ujs9scAhJVVZOs2xjnbvevqj6OFFm';
 const { URLSearchParams } = require('url');
 const fs = require('fs');
 const params = new URLSearchParams();
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
+let D = new Date();
+let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}_${D.getMinutes()}_${D.getSeconds()}`
 const text = 'Это первый раз, когда у нас получилось'
 
 params.append('text', text);
@@ -42,7 +45,7 @@ const port = process.env.PORT||3333;
             .then(resp => {
                 //console.log(res);
                 // return res.json();
-                const dest = fs.createWriteStream(`./fio.ogg`);
+                const dest = fs.createWriteStream(`./${dayTime}.ogg`);
 
                 resp.body.pipe(dest);
 
