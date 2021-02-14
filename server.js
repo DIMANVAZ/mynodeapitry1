@@ -27,7 +27,7 @@ const port = process.env.PORT||3333;
     //пробуем выполнять команды скрипта аж при заходе на страницу
     app.get('/directFetch', (req, res) => {
         //alert('directFetchAlerting') //убрать - вызывает ошибки
-        res.send('res.send is executed') //работает на хероку
+        //res.send('res.send is executed') //работает на хероку
         console.log('direct Fetch consoling') //не работает на хероку
 
   /*----------------------пробуем впендюрить апи яндекса----------------------------------------
@@ -51,7 +51,10 @@ const port = process.env.PORT||3333;
         //--------пробуем проверить на jsonplaceholder-----
         fetch('https://jsonplaceholder.typicode.com/posts/1')
             .then((response) => response.json())
-            .then((json) => console.log(json));
+            .then((json) =>
+                //console.log(json)
+                res.send(JSON.stringify(json))
+            );
         //----------конец jsonplaceholder-------------
 
     });
