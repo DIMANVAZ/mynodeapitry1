@@ -42,7 +42,7 @@ const port = process.env.PORT||3333;
             .then(resp => {
                 //console.log(res);
                 // return res.json();
-                res.send(resp)
+                res.send(__dirname)
                 const dest = fs.createWriteStream(`./fio.ogg`);
                     res.download(path.join(__dirname,`fio.ogg`))
                 res.body.pipe(dest);
