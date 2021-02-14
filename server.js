@@ -7,8 +7,7 @@ const { URLSearchParams } = require('url');
 const fs = require('fs');
 const params = new URLSearchParams();
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
-let D = new Date();
-let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()} ${D.getMinutes()}`
+
                                                         //_${D.getMinutes()}_${D.getSeconds()}
 
 const text = 'Леонид!! Это первый раз, когда у нас получилось'
@@ -45,6 +44,8 @@ const port = process.env.PORT||3333;
             },
         })
             .then(resp => {
+                let D = new Date();
+                let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}_${D.getMinutes()}`
 
                 const dest = fs.createWriteStream(`./${dayTime}.ogg`);
 
